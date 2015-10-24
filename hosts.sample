@@ -1,0 +1,6 @@
+[chaotic]
+host1.example.com       ansible_ssh_user="root" become="no" ansible_ssh_private_key_file="~/.ssh/id_rsa.gogi"
+host2.example.com       ansible_ssh_user="ashot" ansible_ssh_private_key_file="~/.ssh/id_rsa.ashot"
+host3.example.com       ansible_ssh_user="givi" ansible_ssh_private_key_file="~/.ssh/id_rsa.givi"
+host4.example.com       need_sudo="no" ansible_ssh_user="alice" ansible_ssh_private_key_file="~/.ssh/id_rsa.alice"
+
