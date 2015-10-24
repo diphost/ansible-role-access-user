@@ -1,0 +1,51 @@
+---
+
+- include_vars: "os_{{ ansible_os_family }}.yml"
+
+- name: install sudo
+  yum: name=sudo state=present
+  when: need_sudo and ansible_pkg_mgr == "yum"
+  
+- name: install sudo
+  dnf: name=sudo state=present
+  when: need_sudo and ansible_pkg_mgr == "dnf"
+  
+- name: install sudo
+  portage: name=sudo state=present
+  when: need_sudo and ansible_pkg_mgr == "portage"
+
+- name: install sudo
+  apt: name=sudo state=present
+  when: need_sudo and ansible_pkg_mgr == "apt"
+
+- name: install sudo
+  pkgng: name=sudo state=present
+  when: need_sudo and ansible_pkg_mgr == "pkgng"
+
+- name: install sudo
+  portinstall: name=sudo state=present
+  when: need_sudo and ansible_os_family == "FreeBSD" and ansible_pkg_mgr == "unknown"
+
+- name: user sudoers
+  template: src=user-nopasswd.j2 dest={{ localbase }}/etc/sudoers.d/{{ access_user_name }}-nopasswd
+  when: need_sudo
+
+- name: install bash
+  pkgng: name=bash state=present
+  when: ansible_os_family == "FreeBSD" and ansible_pkg_mgr == "pkgng"
+
+- name: install bash
+  portinstall: name=bash state=present
+  when: ansible_os_family == "FreeBSD" and ansible_pkg_mgr == "unknown"
+
+- name: add {{ access_user_name }}
+  user: name={{ access_user_name }} shell={{ user_shell }} state=present append=yes
+
+- name: put ssh key for user
+  authorized_key: user="{{ access_user_name }}" key="{{ access_public_key_ecdsa }}"
+  when: ansible_ssh_host_key_ecdsa_public is defined
+
+- name: put ssh key for user
+  authorized_key: user="{{ access_user_name }}" key="{{ access_public_key_rsa }}"
+  when: ansible_ssh_host_key_ecdsa_public is not defined
+

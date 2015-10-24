@@ -1,0 +1,9 @@
+---
+
+localbase: "/"
+user_shell: "/bin/bash"
+become: yes
+
+access_public_key_ecdsa: ~/.ssh/id_ecdsa
+access_public_key_rsa: ~/.ssh/id_rsa
+
