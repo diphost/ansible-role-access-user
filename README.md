@@ -6,7 +6,7 @@ Bulk addition of universal access on the servers with the disparate access. Orig
 Features
 --------
 
-* FreeBSD, Ubuntu, RedHat OS famaly support
+* FreeBSD, Ubuntu, RedHat OS family support
 * Optional sudo
 * Multiple ssh algorithms
 
