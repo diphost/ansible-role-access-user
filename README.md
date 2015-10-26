@@ -15,8 +15,8 @@ Configuration variables
 
 We believe that these variables are best used in playbook file.
 
-* access_user_name - user for which the access is create, default _\_valera\__
-* need_sudo - need or no sudo access for __valera__
+* *access_user_name* - user for which the access is create, default _\_valera\__
+* *need_sudo* - need or no sudo access for _\_valera\__
 
 Inventory example
 -----------------
