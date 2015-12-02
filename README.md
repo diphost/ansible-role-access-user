@@ -16,7 +16,7 @@ Configuration variables
 We believe that these variables are best used in playbook file.
 
 * *access_user_name* - user for which the access is create, default _\_valera\__
-* *need_sudo* - need or no sudo access for _\_valera\__
+* *need_sudo* - need or no sudo access for _\_valera\__ , true or false
 
 Inventory example
 -----------------
@@ -26,10 +26,10 @@ Inventory example
 
 ```
 [chaotic]
-host1.example.com       ansible_ssh_user="root" become="no" ansible_ssh_private_key_file="~/.ssh/id_rsa.gogi"
-host2.example.com       ansible_ssh_user="ashot" ansible_ssh_private_key_file="~/.ssh/id_rsa.ashot"
-host3.example.com       ansible_ssh_user="givi" ansible_ssh_private_key_file="~/.ssh/id_rsa.givi"
-host4.example.com       need_sudo="no" ansible_ssh_user="alice" ansible_ssh_private_key_file="~/.ssh/id_rsa.alice"
+host1.example.com       ansible_ssh_user="root" ansible_become="false" ansible_ssh_private_key_file="~/.ssh/id_rsa.gogi.pub"
+host2.example.com       ansible_ssh_user="ashot" ansible_ssh_private_key_file="~/.ssh/id_rsa.ashot.pub"
+host3.example.com       ansible_ssh_user="givi" ansible_ssh_private_key_file="~/.ssh/id_rsa.givi.pub"
+host4.example.com       need_sudo="false" ansible_ssh_user="alice" ansible_ssh_private_key_file="~/.ssh/id_rsa.alice.pub"
 ```
 
 --

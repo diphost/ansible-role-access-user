@@ -2,7 +2,7 @@
 - hosts: all
   vars:
         access_user_name: _valera_
-        need_sudo: yes
+        need_sudo: true
   roles:
         - ansible-role-access-user
 

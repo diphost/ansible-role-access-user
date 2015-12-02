@@ -42,10 +42,10 @@
   user: name={{ access_user_name }} shell={{ user_shell }} state=present append=yes
 
 - name: put ssh key for user
-  authorized_key: user="{{ access_user_name }}" key="{{ access_public_key_ecdsa }}"
+  authorized_key: user="{{ access_user_name }}" key="{{ lookup('file', access_public_key_ecdsa) }}"
   when: access_public_key_ecdsa is defined and ansible_ssh_host_key_ecdsa_public is defined
 
 - name: put ssh key for user
-  authorized_key: user="{{ access_user_name }}" key="{{ access_public_key_rsa }}"
+  authorized_key: user="{{ access_user_name }}" key="{{ lookup('file', access_public_key_rsa) }}"
   when: access_public_key_rsa is defined and ansible_ssh_host_key_ecdsa_public is not defined
 
