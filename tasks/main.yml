@@ -40,6 +40,10 @@
 
 - name: add {{ access_user_name }}
   user: name={{ access_user_name }} shell={{ user_shell }} state=present append=yes
+  register: user_opts
+
+- name: chmod 700 /home/user
+  file: path={{ user_opts.home }} mode=0700
 
 - name: put ssh key for user
   authorized_key: user="{{ access_user_name }}" key="{{ lookup('file', access_public_key_ecdsa) }}"
